@@ -1,0 +1,56 @@
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'eclipse'
+
+    sourceCompatibility = 1.6
+    version = '1.0'
+
+    repositories {
+       mavenCentral()
+    }
+}
+
+def cleanTasks = subprojects.collect { project ->
+    "${project.name}:clean"
+}
+
+task clean(dependsOn: cleanTasks) << {
+    delete "$buildDir"
+}
+
+def assembleTasks = subprojects.collect { project ->
+    "${project.name}:assemble"
+}
+
+task release(dependsOn: assembleTasks) << {
+    def distsDirName = "$buildDir/distributions"
+    def dst = mkdir(distsDirName)
+    def srcs = subprojects.collect { project ->
+        project.libsDir
+    }
+    copy {
+        from srcs
+        into dst
+    }
+}
+
+project(':image-processing') {
+    jar {
+        sourceSets.main.resources.exclude '*'
+    }
+}
+
+project(':image-editor') {
+    dependencies {
+        compile project(':image-processing')
+    }
+
+    def libPath = configurations.compile.collect { it.getName() }.join(' ')
+    jar {
+        manifest {
+            attributes 'Main-Class': 'Main'
+            attributes 'Class-Path': libPath
+        }
+        sourceSets.main.resources.exclude '*'
+    }
+}

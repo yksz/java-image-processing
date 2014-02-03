@@ -16,9 +16,4 @@ public class ImageEditor {
         view.setVisible(true);
     }
 
-    public static void main(String args[]) {
-        ImageEditor editor = new ImageEditor();
-        editor.show();
-    }
-
 }

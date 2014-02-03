@@ -10,7 +10,6 @@ public final class ImageUtil {
     }
 
     public static BufferedImage toBufferedImage(Image img) {
-
         int width  = img.getWidth(null);
         int height = img.getHeight(null);
         BufferedImage bimg = new BufferedImage(width, height,
