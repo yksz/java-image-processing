@@ -11,7 +11,6 @@ public final class ImageFilter {
     }
 
     public static BufferedImage grayscale(BufferedImage img) {
-
         BufferedImage newImg = new BufferedImage(
                 img.getWidth(), img.getHeight(), img.getType());
         for (int y = 0; y < img.getHeight(); y++) {
@@ -30,13 +29,11 @@ public final class ImageFilter {
 
     public static BufferedImage filter(BufferedImage img, float[] kernel,
             int kernelWidth, int kernelHeight) {
-
         ConvolveOp op = new ConvolveOp(new Kernel(kernelWidth, kernelHeight, kernel));
         return op.filter(img, null);
     }
 
     public static BufferedImage average(BufferedImage img) {
-
         float[] kernel = { 0.11f, 0.11f, 0.11f,
                            0.11f, 0.11f, 0.11f,
                            0.11f, 0.11f, 0.11f };
@@ -45,7 +42,6 @@ public final class ImageFilter {
     }
 
     public static BufferedImage sharpen(BufferedImage img) {
-
         float[] kernel = {  0, -1,  0,
                            -1,  5, -1,
                             0, -1,  0 };
@@ -54,7 +50,6 @@ public final class ImageFilter {
     }
 
     public static BufferedImage laplacian(BufferedImage img) {
-
         float[] kernel = { -1, -1, -1,
                            -1,  8, -1,
                            -1, -1, -1 };
@@ -63,7 +58,6 @@ public final class ImageFilter {
     }
 
     public static BufferedImage sobel(BufferedImage img) {
-
         int[] xSobel = { -1,  0,  1,
                          -2,  0,  2,
                          -1,  0,  1 };
@@ -104,7 +98,6 @@ public final class ImageFilter {
 
     public static BufferedImage median(BufferedImage img,
             int kernelWidth, int kernelHeight) {
-
         BufferedImage newImg = new BufferedImage(
                 img.getWidth(), img.getHeight(), img.getType());
         int edgex = kernelWidth / 2;
@@ -142,7 +135,6 @@ public final class ImageFilter {
     }
 
     public static BufferedImage color(BufferedImage img, int red, int green, int blue) {
-
         BufferedImage newImg = new BufferedImage(
                 img.getWidth(), img.getHeight(), img.getType());
         for (int y = 0; y < img.getHeight(); y++) {

@@ -5,7 +5,6 @@ import java.awt.image.BufferedImage;
 public final class ImageBinarizer {
 
     public static BufferedImage binarize(BufferedImage img, int threshold) {
-
         int black = getRGB(255, 0, 0, 0);
         int white = getRGB(255, 255, 255, 255);
 
@@ -28,7 +27,6 @@ public final class ImageBinarizer {
     }
 
     public static BufferedImage binarize(BufferedImage img) {
-
         int threshold = getThreshold(img);
         return binarize(img, threshold);
     }
@@ -70,7 +68,6 @@ public final class ImageBinarizer {
     }
 
     private static int[] createHistogram(BufferedImage img, int size) {
-
         int[] histogram = new int[size];
         for (int y = 0; y < img.getHeight(); y++) {
             for (int x = 0; x < img.getWidth(); x++) {

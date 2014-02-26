@@ -8,7 +8,6 @@ public final class ImageFlipper {
     }
 
     public static BufferedImage flipVertical(BufferedImage img) {
-
         BufferedImage newImg = new BufferedImage(
                 img.getWidth(), img.getHeight(), img.getType());
         for (int y = 0; y < img.getHeight(); y++) {
@@ -21,7 +20,6 @@ public final class ImageFlipper {
     }
 
     public static BufferedImage flipHorizontal(BufferedImage img) {
-
         BufferedImage newImg = new BufferedImage(
                 img.getWidth(), img.getHeight(), img.getType());
         for (int y = 0; y < img.getHeight(); y++) {
@@ -34,7 +32,6 @@ public final class ImageFlipper {
     }
 
     public static BufferedImage flipNegativePositive(BufferedImage img) {
-
         BufferedImage newImg = new BufferedImage(
                 img.getWidth(), img.getHeight(), img.getType());
         for (int y = 0; y < img.getHeight(); y++) {

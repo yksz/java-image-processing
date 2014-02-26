@@ -15,7 +15,6 @@ public final class ImageScaler {
 
     public static BufferedImage scale(BufferedImage img, double ratex, double ratey,
             int interpolation) {
-
         AffineTransform affine = AffineTransform.getScaleInstance(ratex, ratey);
         AffineTransformOp op = new AffineTransformOp(affine, interpolation);
 
@@ -27,7 +26,6 @@ public final class ImageScaler {
 
     public static BufferedImage scale(BufferedImage img, int width, int height,
             int interpolation) {
-
         double ratex = (double) width / img.getWidth();
         double ratey = (double) height / img.getHeight();
 

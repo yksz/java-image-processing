@@ -24,7 +24,6 @@ public class ImageProcessingSample {
     private static final String OUTPUT_PATH = RESOURCE_DIRECTORY + "out/" + FILENAME;
 
     public static void main(String[] args) throws IOException{
-
         long startTime = System.currentTimeMillis();
         System.out.println("[before]");
         showMemoryInfo();
@@ -40,7 +39,6 @@ public class ImageProcessingSample {
     }
 
     private static BufferedImage process(BufferedImage img) {
-
         img = ImageBinarizer.binarize(img, 127);
         img = ImageBinarizer.binarize(img);
 
@@ -67,7 +65,6 @@ public class ImageProcessingSample {
     }
 
     private static void showMemoryInfo() {
-
         MemoryMXBean memoryBean = ManagementFactory.getMemoryMXBean();
         MemoryUsage memoryUsage = memoryBean.getHeapMemoryUsage();
 

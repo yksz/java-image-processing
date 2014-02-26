@@ -10,7 +10,6 @@ public final class ImageRotator {
     }
 
     public static BufferedImage rotate(BufferedImage img, int degree) {
-
         double radian = degree * Math.PI / 180;
 
         AffineTransform affine = new AffineTransform();
@@ -23,7 +22,6 @@ public final class ImageRotator {
     }
 
     public static BufferedImage rotateToRightBy90degree(BufferedImage img) {
-
         BufferedImage newImg = new BufferedImage(
                 img.getHeight(), img.getWidth(), img.getType());
         for (int y = 0; y < img.getHeight(); y++) {
@@ -36,7 +34,6 @@ public final class ImageRotator {
     }
 
     public static BufferedImage rotateBy180degree(BufferedImage img) {
-
         BufferedImage newImg = new BufferedImage(
                 img.getWidth(), img.getHeight(), img.getType());
         for (int y = 0; y < img.getHeight(); y++) {
@@ -49,7 +46,6 @@ public final class ImageRotator {
     }
 
     public static BufferedImage rotateToRightBy270degree(BufferedImage img) {
-
         BufferedImage newImg = new BufferedImage(
                 img.getHeight(), img.getWidth(), img.getType());
         for (int y = 0; y < img.getHeight(); y++) {

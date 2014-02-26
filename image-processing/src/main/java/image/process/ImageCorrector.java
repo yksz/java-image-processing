@@ -18,7 +18,6 @@ public final class ImageCorrector {
             conversionTable[i] = (int) ((value + 127.5) / 127.5 * i - value);
             conversionTable[i] = limit(conversionTable[i], 0, 255);
         }
-
         return convert(img, conversionTable);
     }
 
@@ -28,12 +27,10 @@ public final class ImageCorrector {
         int[] conversionTable = new int[256];
         for (int i = 0; i < conversionTable.length; i++)
             conversionTable[i] = (int) (Math.pow(i / 255.0, 1 / value) * 255);
-
         return convert(img, conversionTable);
     }
 
     private static BufferedImage convert(BufferedImage img, int[] table) {
-
         BufferedImage newImg = new BufferedImage(
                 img.getWidth(), img.getHeight(), img.getType());
         for (int y = 0; y < img.getHeight(); y++) {
