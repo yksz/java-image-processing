@@ -77,7 +77,6 @@ public class ColorDialog extends JDialog implements ChangeListener, ActionListen
     }
 
     private void layoutThis() {
-
         GridBagLayout layout = new GridBagLayout();
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.weightx = 100.0;
@@ -127,7 +126,6 @@ public class ColorDialog extends JDialog implements ChangeListener, ActionListen
     }
 
     private JSlider newJSlider() {
-
         JSlider slider = new JSlider(SwingConstants.HORIZONTAL, -250, 250, 0);
         slider.setMajorTickSpacing(100);
         slider.setMinorTickSpacing(50);

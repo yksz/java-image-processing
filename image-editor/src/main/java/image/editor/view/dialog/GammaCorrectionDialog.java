@@ -70,7 +70,6 @@ public class GammaCorrectionDialog extends JDialog implements ChangeListener, Ac
     }
 
     private void layoutThis() {
-
         GridBagLayout layout = new GridBagLayout();
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.weightx = 100.0;
@@ -100,7 +99,6 @@ public class GammaCorrectionDialog extends JDialog implements ChangeListener, Ac
     }
 
     private JSlider newJSlider() {
-
         Dictionary<Integer, JLabel> dictionary = new Hashtable<Integer, JLabel>();
         dictionary.put(new Integer(5), new JLabel("0.5"));
         dictionary.put(new Integer(10), new JLabel("1.0"));

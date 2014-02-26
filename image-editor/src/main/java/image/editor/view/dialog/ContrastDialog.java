@@ -67,7 +67,6 @@ public class ContrastDialog extends JDialog implements ChangeListener, ActionLis
     }
 
     private void layoutThis() {
-
         GridBagLayout layout = new GridBagLayout();
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.weightx = 100.0;
@@ -97,7 +96,6 @@ public class ContrastDialog extends JDialog implements ChangeListener, ActionLis
     }
 
     private JSlider newJSlider() {
-
         JSlider slider = new JSlider(SwingConstants.HORIZONTAL, -100, 100, 0);
         slider.setMajorTickSpacing(50);
         slider.setMinorTickSpacing(10);

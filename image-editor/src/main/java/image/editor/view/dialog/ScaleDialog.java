@@ -89,7 +89,6 @@ public class ScaleDialog extends JDialog implements ChangeListener, ActionListen
     }
 
     private void layoutThis() {
-
         GridBagLayout layout = new GridBagLayout();
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.weightx = 100.0;
@@ -125,7 +124,6 @@ public class ScaleDialog extends JDialog implements ChangeListener, ActionListen
     }
 
     private void setupSizePanel() {
-
         sizePanel = new JPanel();
         LineBorder lineBorder = new LineBorder(Color.gray);
         sizePanel.setBorder(new TitledBorder(lineBorder, "Size"));
