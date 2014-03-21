@@ -2,7 +2,7 @@ package image.editor.view.dialog;
 
 import image.editor.controller.ProcessController;
 import image.editor.util.LayoutUtils;
-import image.process.ImageScaler;
+import image.processing.ImageScaler;
 
 import java.awt.Color;
 import java.awt.Dimension;

@@ -1,4 +1,4 @@
-package image.process;
+package image.processing;
 
 import java.awt.image.BufferedImage;
 

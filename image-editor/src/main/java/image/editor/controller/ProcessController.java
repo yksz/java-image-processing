@@ -9,12 +9,12 @@ import image.editor.view.dialog.ColorDialog;
 import image.editor.view.dialog.ContrastDialog;
 import image.editor.view.dialog.GammaCorrectionDialog;
 import image.editor.view.dialog.ScaleDialog;
-import image.process.ImageBinarizer;
-import image.process.ImageCorrector;
-import image.process.ImageFilter;
-import image.process.ImageFlipper;
-import image.process.ImageRotator;
-import image.process.ImageScaler;
+import image.processing.ImageBinarizer;
+import image.processing.ImageCorrector;
+import image.processing.ImageFilter;
+import image.processing.ImageFlipper;
+import image.processing.ImageRotator;
+import image.processing.ImageScaler;
 
 public class ProcessController {
 

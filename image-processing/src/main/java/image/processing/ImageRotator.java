@@ -1,4 +1,4 @@
-package image.process;
+package image.processing;
 
 import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;

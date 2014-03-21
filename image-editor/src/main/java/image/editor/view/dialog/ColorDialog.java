@@ -2,7 +2,7 @@ package image.editor.view.dialog;
 
 import image.editor.controller.ProcessController;
 import image.editor.util.LayoutUtils;
-import image.process.ImageFilter;
+import image.processing.ImageFilter;
 
 import java.awt.Frame;
 import java.awt.GridBagConstraints;
