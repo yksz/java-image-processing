@@ -1,19 +1,21 @@
 package image.editor;
 
-import image.editor.model.Model;
 import image.editor.view.View;
 
 public class ImageEditor {
 
-    private View view;
+    private final View view;
 
     public ImageEditor() {
-        Model model = new Model();
-        view = new View(model);
+        view = new View();
     }
 
     public void show() {
         view.setVisible(true);
+    }
+
+    public void hide() {
+        view.setVisible(false);
     }
 
 }

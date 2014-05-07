@@ -32,22 +32,21 @@ public class View extends JFrame {
 
     private static final String TITLE = "Image Editor";
 
-    private Model model;
-    private Images images;
-    private Background background;
+    private final Model model;
+    private final Images images;
+    private final Background background;
 
     private ImagePanel imagePanel;
     private StatusBar statusBar;
-
     private JMenuBar menuBar;
     private JScrollPane scrollPane;
 
-    public View(Model model){
-        this.model = model;
+    public View(){
+        this.model = new Model();
         this.images = model.getImages();
         this.background = model.getBackground();
 
-        setLookAndFeel(Environment.LAF_WINDOWS);
+        setLookAndFeel(Environment.LAF_METAL);
 
         statusBar = new StatusBar(" ");
         this.add(statusBar, BorderLayout.SOUTH);

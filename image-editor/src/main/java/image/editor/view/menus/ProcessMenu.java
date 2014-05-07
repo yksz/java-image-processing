@@ -34,7 +34,6 @@ public class ProcessMenu extends JMenu implements ActionListener {
     private JMenuItem rotateToRightMenuItem;
     private JMenuItem rotateToLeftMenuItem;
     private JMenuItem rotateBy180MenuItem;
-
     private JMenuItem scaleMenuItem;
 
     public ProcessMenu(ProcessController controller) {

@@ -1,5 +1,9 @@
 package image.editor.view.menus;
 
+import image.editor.config.Environment;
+import image.editor.controller.PreferencesController;
+import image.editor.util.LayoutUtils;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -7,10 +11,6 @@ import javax.swing.ButtonGroup;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JRadioButtonMenuItem;
-
-import image.editor.config.Environment;
-import image.editor.controller.PreferencesController;
-import image.editor.util.LayoutUtils;
 
 @SuppressWarnings("serial")
 public class PreferencesMenu extends JMenu implements ActionListener {
@@ -56,6 +56,7 @@ public class PreferencesMenu extends JMenu implements ActionListener {
 
         metalMenuItem = LayoutUtils.newJRadioButtonMenuItem("Metal",
                 lookAndFeelMenu, this);
+        metalMenuItem.setSelected(true);
         group.add(metalMenuItem);
 
         motifMenuItem = LayoutUtils.newJRadioButtonMenuItem("Motif",

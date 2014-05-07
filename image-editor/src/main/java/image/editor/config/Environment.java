@@ -7,7 +7,7 @@ public class Environment {
     public static final String LAF_WINDOWS = "com.sun.java.swing.plaf.windows.WindowsLookAndFeel";
     public static final String LAF_WINDOWS_CLASSIC = "com.sun.java.swing.plaf.windows.WindowsClassicLookAndFeel";
 
-    public static final int CONTENTS_WIDTH  = 512;
-    public static final int CONTENTS_HEIGHT = 512;
+    public static int CONTENTS_WIDTH  = 512;
+    public static int CONTENTS_HEIGHT = 512;
 
 }

@@ -12,6 +12,17 @@ import javax.swing.JRadioButtonMenuItem;
 
 public class LayoutUtils {
 
+    public static void setGridBag(Container container, Component component,
+            GridBagLayout layout, GridBagConstraints constraints,
+            int gx, int gy, int gw, int gh) {
+        constraints.gridx = gx;
+        constraints.gridy = gy;
+        constraints.gridwidth = gw;
+        constraints.gridheight = gh;
+        layout.setConstraints(component, constraints);
+        container.add(component);
+    }
+
     public static JMenuItem newJMenuItem(String name, JMenu parent,
             ActionListener listener) {
         JMenuItem menuItem = new JMenuItem(name);
@@ -26,17 +37,6 @@ public class LayoutUtils {
         menuItem.addActionListener(listener);
         parent.add(menuItem);
         return menuItem;
-    }
-
-    public static void setGridBag(Container container, Component component,
-            GridBagLayout layout, GridBagConstraints constraints,
-            int gx, int gy, int gw, int gh) {
-        constraints.gridx = gx;
-        constraints.gridy = gy;
-        constraints.gridwidth = gw;
-        constraints.gridheight = gh;
-        layout.setConstraints(component, constraints);
-        container.add(component);
     }
 
 }
