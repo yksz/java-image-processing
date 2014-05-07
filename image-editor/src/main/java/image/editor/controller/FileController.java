@@ -36,7 +36,6 @@ public class FileController {
 
         images.setImage(img);
         view.update();
-        view.updateStatusBar();
     }
 
     public void save() {

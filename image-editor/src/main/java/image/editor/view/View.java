@@ -9,6 +9,7 @@ import image.editor.controller.ProcessController;
 import image.editor.model.Background;
 import image.editor.model.Images;
 import image.editor.model.Model;
+import image.editor.model.Status;
 import image.editor.view.menus.EditMenu;
 import image.editor.view.menus.FileMenu;
 import image.editor.view.menus.HelpMenu;
@@ -30,11 +31,13 @@ import javax.swing.UIManager;
 @SuppressWarnings("serial")
 public class View extends JFrame {
 
+    private static final String LOOK_AND_FEEL = Environment.LAF_METAL;
     private static final String TITLE = "Image Editor";
 
     private final Model model;
     private final Images images;
     private final Background background;
+    private final Status status;
 
     private ImagePanel imagePanel;
     private StatusBar statusBar;
@@ -45,8 +48,9 @@ public class View extends JFrame {
         this.model = new Model();
         this.images = model.getImages();
         this.background = model.getBackground();
+        this.status = model.getStatus();
 
-        setLookAndFeel(Environment.LAF_METAL);
+        setLookAndFeel(LOOK_AND_FEEL);
 
         statusBar = new StatusBar(" ");
         this.add(statusBar, BorderLayout.SOUTH);
@@ -72,30 +76,15 @@ public class View extends JFrame {
         BufferedImage img = images.getImage();
         if (img != null)
             imagePanel.setImage(img);
-
         Color color = background.getColor();
         if (color != null)
             imagePanel.setBackground(background.getColor());
-
         imagePanel.repaint();
-    }
 
-    public void updateStatusBar() {
-        BufferedImage img = images.getImage();
         if (img != null)
-            statusBar.setStatus(img.getWidth(), img.getHeight());
-    }
-
-    public void updateStatusBar(long time) {
-        BufferedImage img = images.getImage();
-        if (img != null)
-            statusBar.setStatus(img.getWidth(), img.getHeight(), time);
-    }
-
-    public void updateStatusBar(long time, int threshold) {
-        BufferedImage img = images.getImage();
-        if (img != null)
-            statusBar.setStatus(img.getWidth(), img.getHeight(), time, threshold);
+            statusBar.setStatus(img.getWidth(), img.getHeight(),
+                    status.getProcessingTime(), status.getThreshold());
+        status.clear();
     }
 
     private void setLookAndFeel(String className) {

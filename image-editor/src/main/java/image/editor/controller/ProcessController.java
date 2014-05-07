@@ -4,6 +4,7 @@ import java.awt.image.BufferedImage;
 
 import image.editor.model.Images;
 import image.editor.model.Model;
+import image.editor.model.Status;
 import image.editor.view.View;
 import image.editor.view.dialog.ColorDialog;
 import image.editor.view.dialog.ContrastDialog;
@@ -19,10 +20,12 @@ import image.processing.ImageScaler;
 public class ProcessController {
 
     private final Images images;
+    private final Status status;
     private final View view;
 
     public ProcessController(Model model, View view) {
         this.images = model.getImages();
+        this.status = model.getStatus();
         this.view = view;
     }
 
@@ -37,8 +40,9 @@ public class ProcessController {
         long end = System.currentTimeMillis();
 
         images.setImage(img);
+        status.setProcessingTime(end - start);
+        status.setThreshold(threshold);
         view.update();
-        view.updateStatusBar(end - start, threshold);
     }
 
     public void showContrastDialog() {
@@ -60,8 +64,8 @@ public class ProcessController {
         long end = System.currentTimeMillis();
 
         images.setImage(img);
+        status.setProcessingTime(end - start);
         view.update();
-        view.updateStatusBar(end - start);
     }
 
     public void showGammaCorrectionDialog() {
@@ -83,8 +87,8 @@ public class ProcessController {
         long end = System.currentTimeMillis();
 
         images.setImage(img);
+        status.setProcessingTime(end - start);
         view.update();
-        view.updateStatusBar(end - start);
     }
 
     public void grayscale() {
@@ -97,8 +101,8 @@ public class ProcessController {
         long end = System.currentTimeMillis();
 
         images.setImage(img);
+        status.setProcessingTime(end - start);
         view.update();
-        view.updateStatusBar(end - start);
     }
 
     public void average() {
@@ -111,8 +115,8 @@ public class ProcessController {
         long end = System.currentTimeMillis();
 
         images.setImage(img);
+        status.setProcessingTime(end - start);
         view.update();
-        view.updateStatusBar(end - start);
     }
 
     public void sharpen() {
@@ -125,8 +129,8 @@ public class ProcessController {
         long end = System.currentTimeMillis();
 
         images.setImage(img);
+        status.setProcessingTime(end - start);
         view.update();
-        view.updateStatusBar(end - start);
     }
 
     public void laplacian() {
@@ -139,8 +143,8 @@ public class ProcessController {
         long end = System.currentTimeMillis();
 
         images.setImage(img);
+        status.setProcessingTime(end - start);
         view.update();
-        view.updateStatusBar(end - start);
     }
 
     public void sobel() {
@@ -153,8 +157,8 @@ public class ProcessController {
         long end = System.currentTimeMillis();
 
         images.setImage(img);
+        status.setProcessingTime(end - start);
         view.update();
-        view.updateStatusBar(end - start);
     }
 
     public void median() {
@@ -167,8 +171,8 @@ public class ProcessController {
         long end = System.currentTimeMillis();
 
         images.setImage(img);
+        status.setProcessingTime(end - start);
         view.update();
-        view.updateStatusBar(end - start);
     }
 
     public void showColorDialog() {
@@ -190,8 +194,8 @@ public class ProcessController {
         long end = System.currentTimeMillis();
 
         images.setImage(img);
+        status.setProcessingTime(end - start);
         view.update();
-        view.updateStatusBar(end - start);
     }
 
     public void flipVertical() {
@@ -204,8 +208,8 @@ public class ProcessController {
         long end = System.currentTimeMillis();
 
         images.setImage(img);
+        status.setProcessingTime(end - start);
         view.update();
-        view.updateStatusBar(end - start);
     }
 
     public void flipHorizon() {
@@ -218,8 +222,8 @@ public class ProcessController {
         long end = System.currentTimeMillis();
 
         images.setImage(img);
+        status.setProcessingTime(end - start);
         view.update();
-        view.updateStatusBar(end - start);
     }
 
     public void flipNegativePositive() {
@@ -232,8 +236,8 @@ public class ProcessController {
         long end = System.currentTimeMillis();
 
         images.setImage(img);
+        status.setProcessingTime(end - start);
         view.update();
-        view.updateStatusBar(end - start);
     }
 
     public void rotateToRightBy90degree() {
@@ -246,8 +250,8 @@ public class ProcessController {
         long end = System.currentTimeMillis();
 
         images.setImage(img);
+        status.setProcessingTime(end - start);
         view.update();
-        view.updateStatusBar(end - start);
     }
 
     public void rotateToLeftBy90degree() {
@@ -260,8 +264,8 @@ public class ProcessController {
         long end = System.currentTimeMillis();
 
         images.setImage(img);
+        status.setProcessingTime(end - start);
         view.update();
-        view.updateStatusBar(end - start);
     }
 
     public void rotateBy180degree() {
@@ -274,8 +278,8 @@ public class ProcessController {
         long end = System.currentTimeMillis();
 
         images.setImage(img);
+        status.setProcessingTime(end - start);
         view.update();
-        view.updateStatusBar(end - start);
     }
 
     public void showScaleDialog() {
@@ -297,8 +301,8 @@ public class ProcessController {
         long end = System.currentTimeMillis();
 
         images.setImage(img);
+        status.setProcessingTime(end - start);
         view.update();
-        view.updateStatusBar(end - start);
     }
 
 }

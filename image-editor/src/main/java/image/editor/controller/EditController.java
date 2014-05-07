@@ -17,13 +17,11 @@ public class EditController {
     public void undo() {
         images.undo();
         view.update();
-        view.updateStatusBar();
     }
 
     public void redo() {
         images.redo();
         view.update();
-        view.updateStatusBar();
     }
 
 }

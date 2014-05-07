@@ -16,15 +16,6 @@ public class StatusBar extends JLabel {
         setBackground(new Color(207, 207, 207));
     }
 
-    public void setStatus(int width, int height) {
-        setTexts(getPixelsStatus(width, height));
-    }
-
-    public void setStatus(int width, int height, long time) {
-        setTexts(getPixelsStatus(width, height),
-                getProcessingTimeStatus(time));
-    }
-
     public void setStatus(int width, int height, long time, int threshold) {
         setTexts(getPixelsStatus(width, height),
                 getProcessingTimeStatus(time),
@@ -33,27 +24,32 @@ public class StatusBar extends JLabel {
 
     private void setTexts(String... strings) {
         StringBuilder text = new StringBuilder();
+        text.append(INDENT);
         for (String string : strings) {
-            text.append(INDENT);
             text.append(string);
         }
         setText(text.toString());
     }
 
     private String getPixelsStatus(int width, int height) {
-        return width + " x " + height + " pixels";
+        return "size: " + width + " x " + height + " pixels";
     }
 
     private String getProcessingTimeStatus(long time){
+        if (time < 0)
+            return "";
+
         int minutes = (int) (time / 1000 / 60);
         int seconds = (int) (time / 1000 % 60);
         int millis = (int) (time % 1000);
-
-        return "[processing time: " + minutes + "m " + seconds + "." + millis + "s]";
+        return ", processing time: " + minutes + "m " + seconds + "." + millis + "s";
     }
 
     private String getThresholdStatus(int threshold) {
-        return "[threshold: " + threshold + "]";
+        if (threshold < 0)
+            return "";
+
+        return ", threshold: " + threshold;
     }
 
 }
