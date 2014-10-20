@@ -51,7 +51,7 @@ public class ScaleDialog extends JDialog implements ChangeListener, ActionListen
         layoutThis();
 
         setTitle(TITLE);
-        setSize(270, 180);
+        setSize(320, 180);
         setLocationRelativeTo(null);
         setResizable(false);
     }
@@ -127,7 +127,7 @@ public class ScaleDialog extends JDialog implements ChangeListener, ActionListen
         sizePanel = new JPanel();
         LineBorder lineBorder = new LineBorder(Color.gray);
         sizePanel.setBorder(new TitledBorder(lineBorder, "Size"));
-        sizePanel.setPreferredSize(new Dimension(250, 50));
+        sizePanel.setPreferredSize(new Dimension(270, 60));
 
         GridBagLayout layout = new GridBagLayout();
         GridBagConstraints constraints = new GridBagConstraints();
