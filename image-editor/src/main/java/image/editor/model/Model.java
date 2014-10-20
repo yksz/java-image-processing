@@ -5,12 +5,12 @@ import java.awt.Color;
 public class Model {
 
     private final Images images;
-    private final Background background;
-    private final Status status;
+    private Color background;
+    private Status status;
 
     public Model() {
         images = new Images();
-        background = new Background(Color.GRAY);
+        background = Color.GRAY;
         status = new Status();
     }
 
@@ -18,12 +18,20 @@ public class Model {
         return images;
     }
 
-    public Background getBackground() {
+    public Color getBackground() {
         return background;
+    }
+
+    public void setBackground(Color background) {
+        this.background = background;
     }
 
     public Status getStatus() {
         return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 
 }

@@ -6,7 +6,6 @@ import image.editor.controller.FileController;
 import image.editor.controller.HelpController;
 import image.editor.controller.PreferencesController;
 import image.editor.controller.ProcessController;
-import image.editor.model.Background;
 import image.editor.model.Images;
 import image.editor.model.Model;
 import image.editor.model.Status;
@@ -35,9 +34,6 @@ public class View extends JFrame {
     private static final String TITLE = "Image Editor";
 
     private final Model model;
-    private final Images images;
-    private final Background background;
-    private final Status status;
 
     private ImagePanel imagePanel;
     private StatusBar statusBar;
@@ -46,9 +42,6 @@ public class View extends JFrame {
 
     public View(){
         this.model = new Model();
-        this.images = model.getImages();
-        this.background = model.getBackground();
-        this.status = model.getStatus();
 
         setLookAndFeel(LOOK_AND_FEEL);
 
@@ -58,7 +51,7 @@ public class View extends JFrame {
         imagePanel = new ImagePanel();
         imagePanel.setPreferredSize(new Dimension(
                 Environment.CONTENTS_WIDTH, Environment.CONTENTS_HEIGHT));
-        imagePanel.setBackground(background.getColor());
+        imagePanel.setBackground(model.getBackground());
 
         scrollPane = setupScrollPane(imagePanel);
         this.add(scrollPane, BorderLayout.CENTER);
@@ -73,12 +66,15 @@ public class View extends JFrame {
     }
 
     public void update() {
+        Images images = model.getImages();
+        Color background = model.getBackground();
+        Status status = model.getStatus();
+
         BufferedImage img = images.getImage();
         if (img != null)
             imagePanel.setImage(img);
-        Color color = background.getColor();
-        if (color != null)
-            imagePanel.setBackground(background.getColor());
+        if (background != null)
+            imagePanel.setBackground(background);
         imagePanel.repaint();
 
         if (img != null)

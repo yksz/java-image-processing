@@ -16,11 +16,11 @@ public class FileController {
 
     private static final String DEFAULT_FORMAT = "png";
 
-    private final Images images;
+    private final Model model;
     private final View view;
 
     public FileController(Model model, View view) {
-        this.images = model.getImages();
+        this.model = model;
         this.view = view;
     }
 
@@ -34,11 +34,13 @@ public class FileController {
         if (img == null)
             return;
 
+        Images images = model.getImages();
         images.setImage(img);
         view.update();
     }
 
     public void save() {
+        Images images = model.getImages();
         BufferedImage img = images.getImage();
         if (img == null)
             return;
@@ -50,8 +52,7 @@ public class FileController {
         }
     }
 
-    private BufferedImage openImageByDialog()
-            throws IOException {
+    private BufferedImage openImageByDialog() throws IOException {
         FileDialog dialog = new FileDialog(new Frame(), "Open", FileDialog.LOAD);
         dialog.setVisible(true);
         String filename = dialog.getDirectory() + dialog.getFile();
@@ -68,8 +69,7 @@ public class FileController {
         return null;
     }
 
-    public void saveImageByDialog(BufferedImage img)
-            throws IOException {
+    public void saveImageByDialog(BufferedImage img) throws IOException {
         FileDialog dialog = new FileDialog(new Frame(), "Save", FileDialog.SAVE);
         dialog.setVisible(true);
         String filename = dialog.getDirectory() + dialog.getFile();

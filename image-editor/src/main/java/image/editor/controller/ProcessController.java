@@ -19,17 +19,16 @@ import image.processing.ImageScaler;
 
 public class ProcessController {
 
-    private final Images images;
-    private final Status status;
+    private final Model model;
     private final View view;
 
     public ProcessController(Model model, View view) {
-        this.images = model.getImages();
-        this.status = model.getStatus();
+        this.model = model;
         this.view = view;
     }
 
     public void binarize() {
+        Images images = model.getImages();
         BufferedImage img = images.getImage();
         if (img == null)
             return;
@@ -40,12 +39,14 @@ public class ProcessController {
         long end = System.currentTimeMillis();
 
         images.setImage(img);
+        Status status = model.getStatus();
         status.setProcessingTime(end - start);
         status.setThreshold(threshold);
         view.update();
     }
 
     public void showContrastDialog() {
+        Images images = model.getImages();
         BufferedImage img = images.getImage();
         if (img == null)
             return;
@@ -55,6 +56,7 @@ public class ProcessController {
     }
 
     public void contrast(int value) {
+        Images images = model.getImages();
         BufferedImage img = images.getImage();
         if (img == null)
             return;
@@ -64,11 +66,13 @@ public class ProcessController {
         long end = System.currentTimeMillis();
 
         images.setImage(img);
+        Status status = model.getStatus();
         status.setProcessingTime(end - start);
         view.update();
     }
 
     public void showGammaCorrectionDialog() {
+        Images images = model.getImages();
         BufferedImage img = images.getImage();
         if (img == null)
             return;
@@ -78,6 +82,7 @@ public class ProcessController {
     }
 
     public void gammaCorrection(double value) {
+        Images images = model.getImages();
         BufferedImage img = images.getImage();
         if (img == null)
             return;
@@ -87,11 +92,13 @@ public class ProcessController {
         long end = System.currentTimeMillis();
 
         images.setImage(img);
+        Status status = model.getStatus();
         status.setProcessingTime(end - start);
         view.update();
     }
 
     public void grayscale() {
+        Images images = model.getImages();
         BufferedImage img = images.getImage();
         if (img == null)
             return;
@@ -101,11 +108,13 @@ public class ProcessController {
         long end = System.currentTimeMillis();
 
         images.setImage(img);
+        Status status = model.getStatus();
         status.setProcessingTime(end - start);
         view.update();
     }
 
     public void average() {
+        Images images = model.getImages();
         BufferedImage img = images.getImage();
         if (img == null)
             return;
@@ -115,11 +124,13 @@ public class ProcessController {
         long end = System.currentTimeMillis();
 
         images.setImage(img);
+        Status status = model.getStatus();
         status.setProcessingTime(end - start);
         view.update();
     }
 
     public void sharpen() {
+        Images images = model.getImages();
         BufferedImage img = images.getImage();
         if (img == null)
             return;
@@ -129,11 +140,13 @@ public class ProcessController {
         long end = System.currentTimeMillis();
 
         images.setImage(img);
+        Status status = model.getStatus();
         status.setProcessingTime(end - start);
         view.update();
     }
 
     public void laplacian() {
+        Images images = model.getImages();
         BufferedImage img = images.getImage();
         if (img == null)
             return;
@@ -143,11 +156,13 @@ public class ProcessController {
         long end = System.currentTimeMillis();
 
         images.setImage(img);
+        Status status = model.getStatus();
         status.setProcessingTime(end - start);
         view.update();
     }
 
     public void sobel() {
+        Images images = model.getImages();
         BufferedImage img = images.getImage();
         if (img == null)
             return;
@@ -157,11 +172,13 @@ public class ProcessController {
         long end = System.currentTimeMillis();
 
         images.setImage(img);
+        Status status = model.getStatus();
         status.setProcessingTime(end - start);
         view.update();
     }
 
     public void median() {
+        Images images = model.getImages();
         BufferedImage img = images.getImage();
         if (img == null)
             return;
@@ -171,11 +188,13 @@ public class ProcessController {
         long end = System.currentTimeMillis();
 
         images.setImage(img);
+        Status status = model.getStatus();
         status.setProcessingTime(end - start);
         view.update();
     }
 
     public void showColorDialog() {
+        Images images = model.getImages();
         BufferedImage img = images.getImage();
         if (img == null)
             return;
@@ -185,6 +204,7 @@ public class ProcessController {
     }
 
     public void color(int red, int green, int blue) {
+        Images images = model.getImages();
         BufferedImage img = images.getImage();
         if (img == null)
             return;
@@ -194,11 +214,13 @@ public class ProcessController {
         long end = System.currentTimeMillis();
 
         images.setImage(img);
+        Status status = model.getStatus();
         status.setProcessingTime(end - start);
         view.update();
     }
 
     public void flipVertical() {
+        Images images = model.getImages();
         BufferedImage img = images.getImage();
         if (img == null)
             return;
@@ -208,11 +230,13 @@ public class ProcessController {
         long end = System.currentTimeMillis();
 
         images.setImage(img);
+        Status status = model.getStatus();
         status.setProcessingTime(end - start);
         view.update();
     }
 
     public void flipHorizon() {
+        Images images = model.getImages();
         BufferedImage img = images.getImage();
         if (img == null)
             return;
@@ -222,11 +246,13 @@ public class ProcessController {
         long end = System.currentTimeMillis();
 
         images.setImage(img);
+        Status status = model.getStatus();
         status.setProcessingTime(end - start);
         view.update();
     }
 
     public void flipNegativePositive() {
+        Images images = model.getImages();
         BufferedImage img = images.getImage();
         if (img == null)
             return;
@@ -236,11 +262,13 @@ public class ProcessController {
         long end = System.currentTimeMillis();
 
         images.setImage(img);
+        Status status = model.getStatus();
         status.setProcessingTime(end - start);
         view.update();
     }
 
     public void rotateToRightBy90degree() {
+        Images images = model.getImages();
         BufferedImage img = images.getImage();
         if (img == null)
             return;
@@ -250,11 +278,13 @@ public class ProcessController {
         long end = System.currentTimeMillis();
 
         images.setImage(img);
+        Status status = model.getStatus();
         status.setProcessingTime(end - start);
         view.update();
     }
 
     public void rotateToLeftBy90degree() {
+        Images images = model.getImages();
         BufferedImage img = images.getImage();
         if (img == null)
             return;
@@ -264,11 +294,13 @@ public class ProcessController {
         long end = System.currentTimeMillis();
 
         images.setImage(img);
+        Status status = model.getStatus();
         status.setProcessingTime(end - start);
         view.update();
     }
 
     public void rotateBy180degree() {
+        Images images = model.getImages();
         BufferedImage img = images.getImage();
         if (img == null)
             return;
@@ -278,11 +310,13 @@ public class ProcessController {
         long end = System.currentTimeMillis();
 
         images.setImage(img);
+        Status status = model.getStatus();
         status.setProcessingTime(end - start);
         view.update();
     }
 
     public void showScaleDialog() {
+        Images images = model.getImages();
         BufferedImage img = images.getImage();
         if (img == null)
             return;
@@ -292,6 +326,7 @@ public class ProcessController {
     }
 
     public void scale(double ratex, double ratey, int interpolation) {
+        Images images = model.getImages();
         BufferedImage img = images.getImage();
         if (img == null)
             return;
@@ -301,6 +336,7 @@ public class ProcessController {
         long end = System.currentTimeMillis();
 
         images.setImage(img);
+        Status status = model.getStatus();
         status.setProcessingTime(end - start);
         view.update();
     }

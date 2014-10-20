@@ -6,20 +6,22 @@ import image.editor.view.View;
 
 public class EditController {
 
-    private final Images images;
+    private final Model model;
     private final View view;
 
     public EditController(Model model, View view) {
-        this.images = model.getImages();
+        this.model = model;
         this.view = view;
     }
 
     public void undo() {
+        Images images = model.getImages();
         images.undo();
         view.update();
     }
 
     public void redo() {
+        Images images = model.getImages();
         images.redo();
         view.update();
     }
