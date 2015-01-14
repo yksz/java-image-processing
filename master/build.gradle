@@ -1,13 +1,6 @@
 subprojects {
     apply plugin: 'java'
     apply plugin: 'eclipse'
-
-    sourceCompatibility = 1.6
-    version = '1.0'
-
-    repositories {
-       mavenCentral()
-    }
 }
 
 def cleanTasks = subprojects.collect { project ->
@@ -45,11 +38,10 @@ project(':image-editor') {
         compile project(':image-processing')
     }
 
-    def libPath = configurations.compile.collect { it.getName() }.join(' ')
     jar {
         manifest {
             attributes 'Main-Class': 'Main'
-            attributes 'Class-Path': libPath
+            attributes 'Class-Path': configurations.compile.collect { it.name }.join(' ')
         }
         sourceSets.main.resources.exclude '*'
     }
