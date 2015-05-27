@@ -1,4 +1,4 @@
-package image.editor.view.menus;
+package image.editor.view.menu;
 
 import image.editor.controller.EditController;
 import image.editor.util.LayoutUtils;

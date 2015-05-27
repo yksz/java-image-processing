@@ -1,4 +1,4 @@
-package image.editor.view.menus;
+package image.editor.view.menu;
 
 import image.editor.config.Environment;
 import image.editor.controller.PreferencesController;

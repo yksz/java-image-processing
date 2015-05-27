@@ -9,11 +9,11 @@ import image.editor.controller.ProcessController;
 import image.editor.model.Images;
 import image.editor.model.Model;
 import image.editor.model.Status;
-import image.editor.view.menus.EditMenu;
-import image.editor.view.menus.FileMenu;
-import image.editor.view.menus.HelpMenu;
-import image.editor.view.menus.PreferencesMenu;
-import image.editor.view.menus.ProcessMenu;
+import image.editor.view.menu.EditMenu;
+import image.editor.view.menu.FileMenu;
+import image.editor.view.menu.HelpMenu;
+import image.editor.view.menu.PreferencesMenu;
+import image.editor.view.menu.ProcessMenu;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
