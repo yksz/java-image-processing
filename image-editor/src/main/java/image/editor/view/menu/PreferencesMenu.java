@@ -2,7 +2,7 @@ package image.editor.view.menu;
 
 import image.editor.config.Environment;
 import image.editor.controller.PreferencesController;
-import image.editor.util.LayoutUtils;
+import image.editor.view.LayoutUtils;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

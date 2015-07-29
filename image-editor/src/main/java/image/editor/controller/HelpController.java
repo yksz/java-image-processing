@@ -1,15 +1,12 @@
 package image.editor.controller;
 
-import image.editor.model.Model;
-import image.editor.view.View;
-
 import javax.swing.JOptionPane;
 
 public class HelpController {
 
     private static final String INDENT = "    ";
 
-    public HelpController(Model model, View view) {
+    public HelpController() {
     }
 
     public void showAbout() {

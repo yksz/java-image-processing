@@ -1,4 +1,4 @@
-package image.editor.util;
+package image.editor.view;
 
 import java.awt.Component;
 import java.awt.Container;

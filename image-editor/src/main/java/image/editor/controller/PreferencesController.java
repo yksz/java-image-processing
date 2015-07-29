@@ -1,9 +1,8 @@
 package image.editor.controller;
 
-import java.awt.Color;
-
-import image.editor.model.Model;
 import image.editor.view.View;
+
+import java.awt.Color;
 
 import javax.swing.JColorChooser;
 import javax.swing.SwingUtilities;
@@ -11,21 +10,19 @@ import javax.swing.UIManager;
 
 public class PreferencesController {
 
-    private final Model model;
     private final View view;
 
-    public PreferencesController(Model model, View view) {
-        this.model = model;
+    public PreferencesController(View view) {
         this.view = view;
     }
 
     public void selectBackgroundColor() {
         Color color = JColorChooser.showDialog(view, "Select background color",
-                model.getBackground());
+                view.getImagePanel().getBackground());
         if (color == null)
             return;
 
-        model.setBackground(color);
+        view.getImagePanel().setBackground(color);
         view.update();
     }
 

@@ -1,14 +1,14 @@
-package image.editor.util;
+package image.editor.model;
 
 import java.util.LinkedList;
 
-public class Undo<E> {
+class History<E> {
 
     private final int maxSize;
     private int position;
-    private LinkedList<E> list;
+    private final LinkedList<E> list;
 
-    public Undo(int maxSize) {
+    public History(int maxSize) {
         this.maxSize = maxSize;
         this.list = new LinkedList<E>();
     }

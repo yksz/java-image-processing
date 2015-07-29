@@ -6,8 +6,7 @@ import image.editor.controller.FileController;
 import image.editor.controller.HelpController;
 import image.editor.controller.PreferencesController;
 import image.editor.controller.ProcessController;
-import image.editor.model.Images;
-import image.editor.model.Model;
+import image.editor.model.ImageProcessor;
 import image.editor.model.Status;
 import image.editor.view.menu.EditMenu;
 import image.editor.view.menu.FileMenu;
@@ -33,15 +32,15 @@ public class View extends JFrame {
     private static final String LOOK_AND_FEEL = Environment.LAF_METAL;
     private static final String TITLE = "Image Editor";
 
-    private final Model model;
+    private final ImageProcessor processor;
 
-    private ImagePanel imagePanel;
-    private StatusBar statusBar;
-    private JMenuBar menuBar;
-    private JScrollPane scrollPane;
+    private final ImagePanel imagePanel;
+    private final StatusBar statusBar;
+    private final JMenuBar menuBar;
+    private final JScrollPane scrollPane;
 
     public View(){
-        this.model = new Model();
+        this.processor = new ImageProcessor();
 
         setLookAndFeel(LOOK_AND_FEEL);
 
@@ -51,7 +50,7 @@ public class View extends JFrame {
         imagePanel = new ImagePanel();
         imagePanel.setPreferredSize(new Dimension(
                 Environment.CONTENTS_WIDTH, Environment.CONTENTS_HEIGHT));
-        imagePanel.setBackground(model.getBackground());
+        imagePanel.setBackground(Color.GRAY);
 
         scrollPane = setupScrollPane(imagePanel);
         this.add(scrollPane, BorderLayout.CENTER);
@@ -66,21 +65,16 @@ public class View extends JFrame {
     }
 
     public void update() {
-        Images images = model.getImages();
-        Color background = model.getBackground();
-        Status status = model.getStatus();
-
-        BufferedImage img = images.getImage();
-        if (img != null)
+        BufferedImage img = processor.getImage();
+        if (img != null) {
             imagePanel.setImage(img);
-        if (background != null)
-            imagePanel.setBackground(background);
-        imagePanel.repaint();
 
-        if (img != null)
+            Status status = processor.getStatus();
             statusBar.setStatus(img.getWidth(), img.getHeight(),
                     status.getProcessingTime(), status.getThreshold());
-        status.clear();
+            status.clear();
+        }
+        imagePanel.repaint();
     }
 
     private void setLookAndFeel(String className) {
@@ -94,11 +88,11 @@ public class View extends JFrame {
 
     private JMenuBar setupMenuBar() {
         JMenuBar menuBar = new JMenuBar();
-        menuBar.add(new FileMenu(new FileController(model, this)));
-        menuBar.add(new EditMenu(new EditController(model, this)));
-        menuBar.add(new PreferencesMenu(new PreferencesController(model, this)));
-        menuBar.add(new ProcessMenu(new ProcessController(model, this)));
-        menuBar.add(new HelpMenu(new HelpController(model, this)));
+        menuBar.add(new FileMenu(new FileController(processor, this)));
+        menuBar.add(new EditMenu(new EditController(processor, this)));
+        menuBar.add(new PreferencesMenu(new PreferencesController(this)));
+        menuBar.add(new ProcessMenu(new ProcessController(processor, this)));
+        menuBar.add(new HelpMenu(new HelpController()));
         this.setJMenuBar(menuBar);
         return menuBar;
     }
@@ -108,6 +102,10 @@ public class View extends JFrame {
         scrollPane.getVerticalScrollBar().setUnitIncrement(10);
         scrollPane.getHorizontalScrollBar().setUnitIncrement(10);
         return scrollPane;
+    }
+
+    public ImagePanel getImagePanel() {
+        return imagePanel;
     }
 
 }

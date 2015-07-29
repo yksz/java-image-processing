@@ -1,5 +1,8 @@
 package image.editor.controller;
 
+import image.editor.model.ImageProcessor;
+import image.editor.view.View;
+
 import java.awt.FileDialog;
 import java.awt.Frame;
 import java.awt.image.BufferedImage;
@@ -8,51 +11,45 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-import image.editor.model.Images;
-import image.editor.model.Model;
-import image.editor.view.View;
-
 public class FileController {
 
     private static final String DEFAULT_FORMAT = "png";
 
-    private final Model model;
+    private final ImageProcessor processor;
     private final View view;
 
-    public FileController(Model model, View view) {
-        this.model = model;
+    public FileController(ImageProcessor processor, View view) {
+        this.processor = processor;
         this.view = view;
     }
 
     public void open() {
         BufferedImage img = null;
         try {
-            img = openImageByDialog();
+            img = openImageWithDialog();
         } catch (IOException e) {
             e.printStackTrace();
         }
         if (img == null)
             return;
 
-        Images images = model.getImages();
-        images.setImage(img);
+        processor.setImage(img);
         view.update();
     }
 
     public void save() {
-        Images images = model.getImages();
-        BufferedImage img = images.getImage();
+        BufferedImage img = processor.getImage();
         if (img == null)
             return;
 
         try {
-            saveImageByDialog(img);
+            saveImageWithDialog(img);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private BufferedImage openImageByDialog() throws IOException {
+    private BufferedImage openImageWithDialog() throws IOException {
         FileDialog dialog = new FileDialog(new Frame(), "Open", FileDialog.LOAD);
         dialog.setVisible(true);
         String filename = dialog.getDirectory() + dialog.getFile();
@@ -69,7 +66,7 @@ public class FileController {
         return null;
     }
 
-    public void saveImageByDialog(BufferedImage img) throws IOException {
+    public void saveImageWithDialog(BufferedImage img) throws IOException {
         FileDialog dialog = new FileDialog(new Frame(), "Save", FileDialog.SAVE);
         dialog.setVisible(true);
         String filename = dialog.getDirectory() + dialog.getFile();
