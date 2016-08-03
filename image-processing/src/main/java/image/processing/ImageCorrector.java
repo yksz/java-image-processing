@@ -16,7 +16,7 @@ public final class ImageCorrector {
         int[] conversionTable = new int[256];
         for (int i = 0; i < conversionTable.length; i++) {
             conversionTable[i] = (int) ((value + 127.5) / 127.5 * i - value);
-            conversionTable[i] = limit(conversionTable[i], 0, 255);
+            conversionTable[i] = Util.constrain(conversionTable[i], 0, 255);
         }
         return convert(img, conversionTable);
     }
@@ -43,23 +43,10 @@ public final class ImageCorrector {
                 r = table[r];
                 g = table[g];
                 b = table[b];
-                newImg.setRGB(x, y, getRGB(a, r, g, b));
+                newImg.setRGB(x, y, Util.newRGB(a, r, g, b));
             }
         }
         return newImg;
-    }
-
-    private static int getRGB(int a, int r, int g, int b) {
-        return (a << 24) | (r << 16) | (g << 8) | (b << 0);
-    }
-
-    public static int limit(int value, int min, int max) {
-        if (value < min)
-            return min;
-        else if (value > max)
-            return max;
-        else
-            return value;
     }
 
 }

@@ -5,8 +5,8 @@ import java.awt.image.BufferedImage;
 public final class ImageBinarizer {
 
     public static BufferedImage binarize(BufferedImage img, int threshold) {
-        int black = getRGB(255, 0, 0, 0);
-        int white = getRGB(255, 255, 255, 255);
+        int black = Util.newRGB(255, 0, 0, 0);
+        int white = Util.newRGB(255, 255, 255, 255);
 
         BufferedImage newImg = new BufferedImage(
                 img.getWidth(), img.getHeight(), img.getType());
@@ -80,10 +80,6 @@ public final class ImageBinarizer {
             }
         }
         return histogram;
-    }
-
-    private static int getRGB(int a, int r, int g, int b) {
-        return (a << 24) | (r << 16) | (g << 8) | (b << 0);
     }
 
 }

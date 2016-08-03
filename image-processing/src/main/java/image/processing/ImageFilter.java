@@ -21,7 +21,7 @@ public final class ImageFilter {
                 int g = (rgb >>  8) & 0xff;
                 int b = (rgb >>  0) & 0xff;
                 int average = (r + g + b) / 3;
-                newImg.setRGB(x, y, getRGB(a, average, average, average));
+                newImg.setRGB(x, y, Util.newRGB(a, average, average, average));
             }
         }
         return newImg;
@@ -89,8 +89,8 @@ public final class ImageFilter {
                 }
 
                 int sum = (int) (Math.sqrt(xSum * xSum + ySum * ySum));
-                sum = limit(sum, 0, 255);
-                newImg.setRGB(x, y, getRGB(255, sum, sum, sum));
+                sum = Util.constrain(sum, 0, 255);
+                newImg.setRGB(x, y, Util.newRGB(255, sum, sum, sum));
             }
         }
         return newImg;
@@ -123,7 +123,7 @@ public final class ImageFilter {
                 int r = getMedian(rArray);
                 int g = getMedian(gArray);
                 int b = getMedian(bArray);
-                newImg.setRGB(x, y, getRGB(255, r, g, b));
+                newImg.setRGB(x, y, Util.newRGB(255, r, g, b));
             }
         }
         return newImg;
@@ -144,26 +144,13 @@ public final class ImageFilter {
                 int r = (rgb >> 16) & 0xff;
                 int g = (rgb >>  8) & 0xff;
                 int b = (rgb >>  0) & 0xff;
-                r = limit(r + red,   0, 255);
-                g = limit(g + green, 0, 255);
-                b = limit(b + blue,  0, 255);
-                newImg.setRGB(x, y, getRGB(a, r, g, b));
+                r = Util.constrain(r + red,   0, 255);
+                g = Util.constrain(g + green, 0, 255);
+                b = Util.constrain(b + blue,  0, 255);
+                newImg.setRGB(x, y, Util.newRGB(a, r, g, b));
             }
         }
         return newImg;
-    }
-
-    private static int getRGB(int a, int r, int g, int b) {
-        return (a << 24) | (r << 16) | (g << 8) | (b << 0);
-    }
-
-    public static int limit(int value, int min, int max) {
-        if (value < min)
-            return min;
-        else if (value > max)
-            return max;
-        else
-            return value;
     }
 
 }

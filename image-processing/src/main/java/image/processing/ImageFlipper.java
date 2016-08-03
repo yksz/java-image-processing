@@ -41,14 +41,10 @@ public final class ImageFlipper {
                 int r = (rgb >> 16) & 0xff;
                 int g = (rgb >>  8) & 0xff;
                 int b = (rgb >>  0) & 0xff;
-                newImg.setRGB(x, y, getRGB(a, 255 - r, 255 - g, 255 - b));
+                newImg.setRGB(x, y, Util.newRGB(a, 255 - r, 255 - g, 255 - b));
             }
         }
         return newImg;
-    }
-
-    private static int getRGB(int a, int r, int g, int b) {
-        return (a << 24) | (r << 16) | (g << 8) | (b << 0);
     }
 
 }
